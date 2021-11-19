@@ -1,0 +1,33 @@
+==77512== NVPROF is profiling process 77512, command: ./lassen-executable/gaussian_111 -q -f ../../data/gaussian/matrix4.txt
+WG size of kernel 1 = 512, WG size of kernel 2= 4 X 4
+Read file from ../../data/gaussian/matrix4.txt 
+alloc a
+Number of allocated Data = 1
+in api range: 0x200060000000 0x200060000040
+alloc b
+Number of allocated Data = 2
+in api range: 0x200060000200 0x200060000210
+alloc m
+Number of allocated Data = 3
+in api range: 0x200060000400 0x200060000440
+
+Time total (including memory transfers)	0.000325 sec
+Time for CUDA kernels:	0.000325 sec
+==77512== Profiling application: ./lassen-executable/gaussian_111 -q -f ../../data/gaussian/matrix4.txt
+==77512== Profiling result:
+   Start  Duration            Grid Size      Block Size     Regs*    SSMem*    DSMem*           Device   Context    Stream        Unified Memory  Virtual Address  Name
+589.59ms         -                    -               -         -         -         -                -         -         -           PC 0x46ae78   0x200060000000  [Unified Memory CPU page faults]
+589.77ms  166.08us              (1 1 1)       (512 1 1)        17        0B        0B  Tesla V100-SXM2         1         7                     -                -  Fan1(float*, float*, int, int) [419]
+589.77ms  157.12us                    -               -         -         -         -  Tesla V100-SXM2         -         -                     2   0x200060000000  [Unified Memory GPU page faults]
+589.91ms  5.9840us                    -               -         -         -         -  Tesla V100-SXM2         -         -           64.000000KB   0x200060000000  [Unified Memory Memcpy HtoD]
+589.96ms  4.5440us              (1 1 1)         (4 4 1)        16        0B        0B  Tesla V100-SXM2         1         7                     -                -  Fan2(float*, float*, float*, int, int, int) [421]
+589.98ms  3.8080us              (1 1 1)       (512 1 1)        17        0B        0B  Tesla V100-SXM2         1         7                     -                -  Fan1(float*, float*, int, int) [424]
+590.01ms  4.2240us              (1 1 1)         (4 4 1)        16        0B        0B  Tesla V100-SXM2         1         7                     -                -  Fan2(float*, float*, float*, int, int, int) [426]
+590.03ms  3.8080us              (1 1 1)       (512 1 1)        17        0B        0B  Tesla V100-SXM2         1         7                     -                -  Fan1(float*, float*, int, int) [429]
+590.05ms  4.2240us              (1 1 1)         (4 4 1)        16        0B        0B  Tesla V100-SXM2         1         7                     -                -  Fan2(float*, float*, float*, int, int, int) [431]
+590.07ms         -                    -               -         -         -         -                -         -         -         PC 0x10004a54   0x200060000000  [Unified Memory CPU page faults]
+590.09ms  3.1040us                    -               -         -         -         -  Tesla V100-SXM2         -         -           64.000000KB   0x200060000000  [Unified Memory Memcpy DtoH]
+
+Regs: Number of registers used per CUDA thread. This number includes registers used internally by the CUDA driver and/or tools and can be more than what the compiler shows.
+SSMem: Static shared memory allocated per CUDA block.
+DSMem: Dynamic shared memory allocated per CUDA block.

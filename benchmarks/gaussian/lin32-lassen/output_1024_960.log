@@ -1,0 +1,26 @@
+==152326== NVPROF is profiling process 152326, command: ./gaussian_1024 -s 960
+==152326== Profiling application: ./gaussian_1024 -s 960
+==152326== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+                        %        ms                  ms        ms        ms
+ GPU activities:    95.82  79.37129       959  0.082764  0.082175  0.284768  Fan2(float*, float*, float*, int, int, int)
+                     4.18  3.462612       959  3.61e-03  1.12e-03  1.655579  Fan1(float*, float*, int, int)
+      API calls:    66.49  249.8587         3  83.28623  0.063808  249.7288  cudaMallocManaged
+                    25.26  94.93199      1918  0.049495  7.02e-03  1.662730  cudaThreadSynchronize
+                     5.44  20.43674      1918  0.010655  0.010189  0.040422  cudaLaunchKernel
+                     1.37  5.148377       384  0.013407  2.36e-04  0.546847  cuDeviceGetAttribute
+                     1.06  3.983181         4  0.995795  0.986840  1.012783  cuDeviceTotalMem
+                     0.18  0.679567         3  0.226522  0.174171  0.306606  cudaFree
+                     0.11  0.426684         4  0.106671  0.103166  0.111775  cuDeviceGetName
+                     0.07  0.277649       959  2.89e-04  2.50e-04  3.83e-04  cudaGetLastError
+                     0.00  0.013199         4  3.30e-03  1.26e-03  8.19e-03  cuDeviceGetPCIBusId
+                     0.00  3.03e-03         8  3.78e-04  2.98e-04  5.02e-04  cuDeviceGet
+                     0.00  1.43e-03         3  4.78e-04  4.06e-04  6.21e-04  cuDeviceGetCount
+
+==152326== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      33  223.03KB  64.000KB  896.00KB  7.187500MB    0.313760ms  Host To Device
+      41  179.51KB  64.000KB  960.00KB  7.187500MB    0.331456ms  Device To Host
+       9         -         -         -           -    1.847712ms  Gpu page fault groups
+Total CPU Page faults: 50

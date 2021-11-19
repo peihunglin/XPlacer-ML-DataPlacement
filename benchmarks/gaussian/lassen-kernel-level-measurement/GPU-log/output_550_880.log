@@ -1,0 +1,31 @@
+==99876== NVPROF is profiling process 99876, command: ./GPU-executable/gaussian_550 -q -s 880
+==99876== Profiling application: ./GPU-executable/gaussian_550 -q -s 880
+==99876== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+                        %        ms                  ms        ms        ms
+ GPU activities:    93.31  66.62288       879  0.075793  0.075392  0.250687  Fan2(float*, float*, float*, int, int, int)
+                     6.30  4.494378       879  5.11e-03  3.58e-03  0.804124  Fan1(float*, float*, int, int)
+                     0.20  0.141215         1  0.141215  0.141215  0.141215  [CUDA memcpy HtoD]
+                     0.19  0.137280         1  0.137280  0.137280  0.137280  [CUDA memcpy DtoH]
+      API calls:    72.80  291.8489         2  145.9244  0.041514  291.8073  cudaMallocManaged
+                    20.03  80.29636      1758  0.045674  7.83e-03  0.808670  cudaThreadSynchronize
+                     4.31  17.27761      1758  9.83e-03  9.25e-03  0.039108  cudaLaunchKernel
+                     1.28  5.145925       388  0.013262  2.29e-04  0.536701  cuDeviceGetAttribute
+                     1.00  4.001989         4  1.000497  0.995934  1.005384  cuDeviceTotalMem
+                     0.17  0.667678         3  0.222559  0.131395  0.354730  cudaFree
+                     0.13  0.519158         1  0.519158  0.519158  0.519158  cudaMalloc
+                     0.12  0.470239         2  0.235119  0.219422  0.250817  cudaMemcpy
+                     0.11  0.430706         4  0.107676  0.103871  0.112853  cuDeviceGetName
+                     0.06  0.240929       879  2.74e-04  2.46e-04  5.86e-04  cudaGetLastError
+                     0.00  0.010716         4  2.68e-03  1.19e-03  5.29e-03  cuDeviceGetPCIBusId
+                     0.00  3.32e-03         8  4.14e-04  2.99e-04  6.60e-04  cuDeviceGet
+                     0.00  1.44e-03         3  4.79e-04  4.04e-04  6.21e-04  cuDeviceGetCount
+                     0.00  1.44e-03         4  3.59e-04  3.35e-04  4.24e-04  cuDeviceGetUuid
+
+==99876== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      21  149.33KB  64.000KB  448.00KB  3.062500MB    0.104896ms  Host To Device
+      19  165.05KB  64.000KB  960.00KB  3.062500MB    0.091296ms  Device To Host
+       5         -         -         -           -    0.968160ms  Gpu page fault groups
+Total CPU Page faults: 24

@@ -1,0 +1,29 @@
+==100500== NVPROF is profiling process 100500, command: ./GPU-executable/gaussian_551 -q -f ../../data/gaussian/matrix1024.txt
+==100500== Profiling application: ./GPU-executable/gaussian_551 -q -f ../../data/gaussian/matrix1024.txt
+==100500== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+                        %        ms                  ms        ms        ms
+ GPU activities:    99.27  1.59e+03      1023  1.551032  0.095679  5.297886  Fan2(float*, float*, float*, int, int, int)
+                     0.73  11.61020      1023  0.011349  3.78e-03  1.507318  Fan1(float*, float*, int, int)
+      API calls:    83.31  1.61e+03      2046  0.786647  9.16e-03  5.302928  cudaThreadSynchronize
+                    15.08  291.2714         3  97.09048  0.033219  291.2012  cudaMallocManaged
+                     1.06  20.51002      2046  0.010024  9.23e-03  0.039198  cudaLaunchKernel
+                     0.27  5.157351       388  0.013292  2.30e-04  0.550692  cuDeviceGetAttribute
+                     0.21  4.006066         4  1.001516  0.995716  1.011692  cuDeviceTotalMem
+                     0.04  0.712673         3  0.237557  0.133279  0.325125  cudaFree
+                     0.02  0.425447         4  0.106361  0.103349  0.107849  cuDeviceGetName
+                     0.01  0.289431      1023  2.82e-04  2.31e-04  6.62e-04  cudaGetLastError
+                     0.00  0.018661         2  9.33e-03  7.96e-03  0.010700  cudaMemAdvise
+                     0.00  0.011431         4  2.86e-03  1.21e-03  6.40e-03  cuDeviceGetPCIBusId
+                     0.00  3.36e-03         8  4.19e-04  2.96e-04  5.92e-04  cuDeviceGet
+                     0.00  1.60e-03         3  5.33e-04  4.55e-04  6.11e-04  cuDeviceGetCount
+                     0.00  1.45e-03         4  3.62e-04  3.23e-04  4.07e-04  cuDeviceGetUuid
+
+==100500== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      27  151.70KB  64.000KB  640.00KB  4.000000MB    0.165984ms  Host To Device
+      20         -         -         -           -    1.663552ms  Gpu page fault groups
+      46  90.435KB  64.000KB  256.00KB  4.062500MB           -  Remote mapping from device
+Total CPU Page faults: 15
+Total remote mappings to CPU: 46

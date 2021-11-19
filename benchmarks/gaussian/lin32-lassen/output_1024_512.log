@@ -1,0 +1,26 @@
+==151358== NVPROF is profiling process 151358, command: ./gaussian_1024 -s 512
+==151358== Profiling application: ./gaussian_1024 -s 512
+==151358== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+                        %        ms                  ms        ms        ms
+ GPU activities:    88.42  14.53091       511  0.028436  0.027744  0.275807  Fan2(float*, float*, float*, int, int, int)
+                    11.58  1.902875       511  3.72e-03  1.31e-03  0.931326  Fan1(float*, float*, int, int)
+      API calls:    85.06  250.9936         3  83.66453  0.011945  250.9227  cudaMallocManaged
+                     7.83  23.10615      1022  0.022608  7.20e-03  0.938497  cudaThreadSynchronize
+                     3.67  10.83127      1022  0.010598  0.010168  0.040957  cudaLaunchKernel
+                     1.74  5.148295       384  0.013407  2.37e-04  0.541677  cuDeviceGetAttribute
+                     1.35  3.996603         4  0.999150  0.991408  1.015550  cuDeviceTotalMem
+                     0.14  0.425550         4  0.106387  0.103160  0.110925  cuDeviceGetName
+                     0.14  0.402764         3  0.134254  0.031614  0.192355  cudaFree
+                     0.05  0.149367       511  2.92e-04  2.52e-04  4.72e-04  cudaGetLastError
+                     0.00  0.011451         4  2.86e-03  1.08e-03  6.44e-03  cuDeviceGetPCIBusId
+                     0.00  3.17e-03         8  3.96e-04  2.99e-04  6.43e-04  cuDeviceGet
+                     0.00  1.42e-03         3  4.73e-04  4.12e-04  5.68e-04  cuDeviceGetCount
+
+==151358== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      20  153.60KB  64.000KB  960.00KB  3.000000MB    0.152160ms  Host To Device
+      18  170.67KB  64.000KB  960.00KB  3.000000MB    0.166048ms  Device To Host
+      11         -         -         -           -    1.169152ms  Gpu page fault groups
+Total CPU Page faults: 22

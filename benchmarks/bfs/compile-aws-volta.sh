@@ -1,0 +1,32 @@
+#!/bin/bash -x
+# i,j,k,l,m,n represents 6 arrays used in BFS
+# each has 7 memory advises  
+
+# configure environment based on your machine
+INCLUDE_OPT="-I/usr/local/cuda-10.2/samples/common/inc -I../../cuda-adapter"
+LINK_FLAGS="-L/usr/local/cuda-10.2/lib64"
+BIN_PATH=`hostname`-executable
+
+mkdir -p ./GPU-executable
+for i in `seq 0 6`;
+do
+for j in `seq 0 6`;
+do
+for k in `seq 0 6`;
+do
+for l in `seq 0 6`;
+do
+for m in `seq 0 0`;
+do
+for n in `seq 0 0`;
+do
+echo $i $j $k $l $m $n
+nvcc -O2 -Xptxas -v --gpu-architecture=compute_70 --gpu-code=compute_70 bfs_adapt.cu ../../cuda-adapter/adapter.o -o bfs_adapt $INCLUDE_OPT $LINK_FLAGS  -Dadv1=$i -Dadv2=$j -Dadv3=$k -Dadv4=$l -Dadv5=$m -Dadv6=$n
+mv bfs_adapt ./GPU-executable/bfs_$i$j$k$l$m$n
+done    
+done    
+done    
+done    
+done    
+done    
+        

@@ -1,0 +1,26 @@
+==115442== NVPROF is profiling process 115442, command: ./gaussian_1000 -s 384
+==115442== Profiling application: ./gaussian_1000 -s 384
+==115442== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+                        %        ms                  ms        ms        ms
+ GPU activities:    83.02  6.201976       383  0.016193  0.016032  0.016896  Fan2(float*, float*, float*, int, int, int)
+                    16.98  1.268862       383  3.31e-03  1.31e-03  0.602399  Fan1(float*, float*, int, int)
+      API calls:    89.28  254.5768         3  84.85894  7.55e-03  254.5576  cudaMallocManaged
+                     4.36  12.44468       766  0.016246  7.33e-03  0.610236  cudaThreadSynchronize
+                     2.87  8.173124       766  0.010669  0.010175  0.041668  cudaLaunchKernel
+                     1.79  5.117222       384  0.013326  2.39e-04  0.539290  cuDeviceGetAttribute
+                     1.40  3.999460         4  0.999865  0.991542  1.014909  cuDeviceTotalMem
+                     0.15  0.425523         4  0.106380  0.103078  0.110347  cuDeviceGetName
+                     0.10  0.288045         3  0.096015  0.028779  0.214385  cudaFree
+                     0.04  0.117295       383  3.06e-04  2.50e-04  4.59e-04  cudaGetLastError
+                     0.00  0.013251         4  3.31e-03  1.14e-03  8.21e-03  cuDeviceGetPCIBusId
+                     0.00  3.15e-03         8  3.93e-04  2.99e-04  5.53e-04  cuDeviceGet
+                     0.00  1.40e-03         3  4.66e-04  4.15e-04  5.69e-04  cuDeviceGetCount
+
+==115442== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      10  204.80KB  64.000KB  896.00KB  2.000000MB    0.090624ms  Host To Device
+      12  106.67KB  64.000KB  448.00KB  1.250000MB    0.075360ms  Device To Host
+       5         -         -         -           -    0.595968ms  Gpu page fault groups
+Total CPU Page faults: 14

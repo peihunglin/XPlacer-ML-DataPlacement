@@ -1,0 +1,27 @@
+==111700== NVPROF is profiling process 111700, command: ./GPU-executable/gaussian_555 -q -s 1024
+==111700== Profiling application: ./GPU-executable/gaussian_555 -q -s 1024
+==111700== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+                        %        ms                  ms        ms        ms
+ GPU activities:    94.05  98.29074      1023  0.096080  0.095647  0.306239  Fan2(float*, float*, float*, int, int, int)
+                     5.95  6.219850      1023  6.08e-03  3.46e-03  1.888248  Fan1(float*, float*, int, int)
+      API calls:    66.99  294.3258         3  98.10861  0.031831  294.2577  cudaMallocManaged
+                    26.11  114.7208      2046  0.056070  7.66e-03  1.892717  cudaThreadSynchronize
+                     4.55  19.98763      2046  9.77e-03  9.15e-03  0.052592  cudaLaunchKernel
+                     1.17  5.160950       388  0.013301  2.27e-04  0.536687  cuDeviceGetAttribute
+                     0.91  3.996202         4  0.999050  0.995699  1.006090  cuDeviceTotalMem
+                     0.10  0.434455         3  0.144818  0.116222  0.174077  cudaFree
+                     0.10  0.432451         4  0.108112  0.107545  0.108466  cuDeviceGetName
+                     0.06  0.283417      1023  2.77e-04  2.40e-04  4.63e-04  cudaGetLastError
+                     0.00  0.012730         4  3.18e-03  1.24e-03  6.74e-03  cuDeviceGetPCIBusId
+                     0.00  4.43e-03         8  5.53e-04  2.91e-04  8.29e-04  cuDeviceGet
+                     0.00  1.57e-03         3  5.23e-04  4.16e-04  6.23e-04  cuDeviceGetCount
+                     0.00  1.47e-03         4  3.68e-04  3.03e-04  4.12e-04  cuDeviceGetUuid
+
+==111700== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      52  158.77KB  64.000KB  512.00KB  8.062500MB    0.288480ms  Host To Device
+      21  198.10KB  64.000KB  960.00KB  4.062500MB    0.106336ms  Device To Host
+      11         -         -         -           -    2.082976ms  Gpu page fault groups
+Total CPU Page faults: 38

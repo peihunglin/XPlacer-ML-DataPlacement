@@ -1,0 +1,26 @@
+==157407== NVPROF is profiling process 157407, command: ./gaussian_1234 -s 784
+==157407== Profiling application: ./gaussian_1234 -s 784
+==157407== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+                        %        ms                  ms        ms        ms
+ GPU activities:    94.41  50.31480       783  0.064259  0.063775  0.276671  Fan2(float*, float*, float*, int, int, int)
+                     5.59  2.980056       783  3.81e-03  1.28e-03  1.491675  Fan1(float*, float*, int, int)
+      API calls:    74.57  265.1864         3  88.39547  0.067021  265.0497  cudaMallocManaged
+                    17.85  63.47549      1566  0.040533  7.25e-03  1.499475  cudaThreadSynchronize
+                     4.66  16.58506      1566  0.010590  0.010019  0.041658  cudaLaunchKernel
+                     1.44  5.135072       384  0.013372  2.37e-04  0.537429  cuDeviceGetAttribute
+                     1.13  4.009231         4  1.002307  0.988342  1.011399  cuDeviceTotalMem
+                     0.15  0.540256         3  0.180085  0.165997  0.193676  cudaFree
+                     0.12  0.425004         4  0.106251  0.102871  0.109995  cuDeviceGetName
+                     0.07  0.240617       783  3.07e-04  2.61e-04  5.53e-04  cudaGetLastError
+                     0.00  0.010348         4  2.59e-03  1.10e-03  5.65e-03  cuDeviceGetPCIBusId
+                     0.00  3.04e-03         8  3.79e-04  3.01e-04  5.48e-04  cuDeviceGet
+                     0.00  1.42e-03         3  4.74e-04  4.21e-04  5.78e-04  cuDeviceGetCount
+
+==157407== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      35  140.80KB  64.000KB  832.00KB  4.812500MB    0.262592ms  Host To Device
+      33  149.33KB  64.000KB  960.00KB  4.812500MB    0.244224ms  Device To Host
+       7         -         -         -           -    1.694496ms  Gpu page fault groups
+Total CPU Page faults: 42

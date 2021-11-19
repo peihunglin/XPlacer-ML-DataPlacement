@@ -1,0 +1,27 @@
+==38841== NVPROF is profiling process 38841, command: ./GPU-executable/gaussian_512 -q -s 368
+==38841== Profiling application: ./GPU-executable/gaussian_512 -q -s 368
+==38841== Profiling result:
+            Type  Time(%)      Time     Calls       Avg       Min       Max  Name
+                        %        ms                  ms        ms        ms
+ GPU activities:    74.02  5.611686       367  0.015290  0.015135  0.015904  Fan2(float*, float*, float*, int, int, int)
+                    25.98  1.969945       367  5.37e-03  3.46e-03  0.595998  Fan1(float*, float*, int, int)
+      API calls:    91.04  289.6974         3  96.56579  0.010959  289.6752  cudaMallocManaged
+                     3.58  11.40602       734  0.015539  7.60e-03  0.601394  cudaThreadSynchronize
+                     2.25  7.167007       734  9.76e-03  9.21e-03  0.032719  cudaLaunchKernel
+                     1.61  5.120628       388  0.013197  2.26e-04  0.535130  cuDeviceGetAttribute
+                     1.27  4.039211         4  1.009802  0.991277  1.052012  cuDeviceTotalMem
+                     0.14  0.456267         4  0.114066  0.103628  0.136854  cuDeviceGetName
+                     0.07  0.220208         3  0.073402  0.031505  0.144916  cudaFree
+                     0.03  0.093716       367  2.55e-04  2.35e-04  4.50e-04  cudaGetLastError
+                     0.00  0.010948         4  2.74e-03  1.24e-03  5.89e-03  cuDeviceGetPCIBusId
+                     0.00  4.37e-03         8  5.46e-04  3.01e-04  8.61e-04  cuDeviceGet
+                     0.00  1.74e-03         3  5.80e-04  4.32e-04  6.60e-04  cuDeviceGetCount
+                     0.00  1.40e-03         4  3.49e-04  3.11e-04  4.20e-04  cuDeviceGetUuid
+
+==38841== Unified Memory profiling result:
+Device "Tesla V100-SXM2-16GB (0)"
+   Count  Avg Size  Min Size  Max Size  Total Size  Total Time  Name
+      12  170.67KB  64.000KB  960.00KB  2.000000MB    0.072992ms  Host To Device
+       7  82.285KB  64.000KB  192.00KB  576.0000KB    0.022592ms  Device To Host
+       5         -         -         -           -    0.586208ms  Gpu page fault groups
+Total CPU Page faults: 11
